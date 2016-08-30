@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Graficos</title>
+        <script src="js/bootstrap.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <f:metadata>
+            <f:viewAction action="#{pessoaController.carregar()}" />
+
+        </f:metadata>
+    </h:head>
+    <h:body>
+        <h:form id="frmDashboard" class="container">
+
+            <h:panelGrid columns="1">
+                <p:outputLabel value="Projetos" />
+                <p:selectOneMenu value="#{pessoaController.idProjeto}" >
+                    <f:selectItem itemValue="0" itemLabel="Todos" />
+                    <f:selectItems var="p" value="#{pessoaController.listaProjeto}" itemLabel="#{p.nome}" itemValue="#{p.idProjeto}" />
+                    <p:ajax event="change" listener="#{pessoaController.carregar}" update=":frmDashboard" />
+                </p:selectOneMenu>
+            </h:panelGrid>
+
+            <h:panelGrid columns="2" style="width: 100%">
+                <p:panel  header="Pessoa por UF">
+                    <p:chart type="bar" id="uf" model="#{pessoaController.graficoBarraUF}" responsive="true"  />
+                </p:panel>
+
+                <p:panel  header="Congregado">
+                    <p:chart type="bar" id="congregado" model="#{pessoaController.graficoBarraCongregado}" responsive="true" />
+                </p:panel>
+            </h:panelGrid>
+
+            <h:panelGrid columns="2" style="width: 100%">
+                <p:panel  header="Tipo de entrada">
+                    <p:chart type="bar" id="entrada"  model="#{pessoaController.graficoBarraTipoEntrada}" responsive="true"  />
+                </p:panel>
+                <p:panel  header="Tipo de saída">
+                    <p:chart type="bar" id="saida" model="#{pessoaController.graficoBarraTipoSaida}" responsive="true"  />
+                </p:panel>
+            </h:panelGrid>
+            <p:panel  header="PGM">
+                <p:chart type="bar" id="pgm" model="#{pessoaController.graficoBarraPgm}" responsive="true"  />
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+
