@@ -92,7 +92,7 @@ public class PessoaController {
         graficoBarraUF.setLegendPosition("e");
         graficoBarraUF.setAnimate(true);
         graficoBarraUF.setBarMargin(10);       
-        graficoBarraUF.setLegendPlacement(LegendPlacement.INSIDE);
+        graficoBarraUF.setLegendPlacement(LegendPlacement.OUTSIDEGRID);
     }
 
     public void criarGraficoBarraCongregado() {
@@ -112,7 +112,7 @@ public class PessoaController {
         graficoBarraCongregado.setLegendPosition("e");
         graficoBarraCongregado.setAnimate(true);
         graficoBarraCongregado.setBarMargin(10);
-        graficoBarraCongregado.setLegendPlacement(LegendPlacement.INSIDE);
+        graficoBarraCongregado.setLegendPlacement(LegendPlacement.OUTSIDEGRID);
     }
 
     public void criarGraficoBarraTipoEntrada() {
@@ -134,7 +134,7 @@ public class PessoaController {
         graficoBarraTipoEntrada.setLegendPosition("e");
         graficoBarraTipoEntrada.setAnimate(true);
         graficoBarraTipoEntrada.setBarMargin(10);
-        graficoBarraTipoEntrada.setLegendPlacement(LegendPlacement.INSIDE);
+        graficoBarraTipoEntrada.setLegendPlacement(LegendPlacement.OUTSIDEGRID);
     }
 
     public void criarGraficoBarraTipoSaida() {
@@ -155,7 +155,7 @@ public class PessoaController {
         graficoBarraTipoSaida.setLegendPosition("e");
         graficoBarraTipoSaida.setAnimate(true);
         graficoBarraTipoSaida.setBarMargin(10);
-        graficoBarraTipoSaida.setLegendPlacement(LegendPlacement.INSIDE);
+        graficoBarraTipoSaida.setLegendPlacement(LegendPlacement.OUTSIDEGRID);
     }
     
       public void criarGraficoBarraPgm() {
@@ -175,7 +175,7 @@ public class PessoaController {
         graficoBarraPgm.setLegendPosition("e");
         graficoBarraPgm.setAnimate(true);
         graficoBarraPgm.setBarMargin(10);
-        graficoBarraPgm.setLegendPlacement(LegendPlacement.INSIDE);
+        graficoBarraPgm.setLegendPlacement(LegendPlacement.OUTSIDEGRID);
     }
     
 

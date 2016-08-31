@@ -19,11 +19,11 @@
 
             <h:panelGrid columns="1">
                 <p:outputLabel value="Projetos" />
-                <p:selectOneMenu value="#{pessoaController.idProjeto}" >
+                <h:selectOneMenu value="#{pessoaController.idProjeto}" >
                     <f:selectItem itemValue="0" itemLabel="Todos" />
                     <f:selectItems var="p" value="#{pessoaController.listaProjeto}" itemLabel="#{p.nome}" itemValue="#{p.idProjeto}" />
-                    <p:ajax event="change" listener="#{pessoaController.carregar}" update=":frmDashboard" />
-                </p:selectOneMenu>
+                    <p:ajax event="change" listener="#{pessoaController.carregar}" update="uf" />
+                </h:selectOneMenu>
             </h:panelGrid>
 
             <h:panelGrid columns="2" style="width: 100%">

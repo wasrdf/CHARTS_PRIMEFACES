@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Dashboard de Projetos</title>
+        <script src="js/bootstrap.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <f:metadata>
+            <f:viewAction action="#{projetoController.carregar()}" />
+
+        </f:metadata>
+    </h:head>
+    <h:body>
+        <h:form id="frmPrincipal" class="container">
+
+            <h:panelGrid columns="2" style="width: 100%">
+                <p:panel  header="Projeto por estado">
+                    <h:panelGrid columns="1">
+                        <p:outputLabel value="Estado" />
+                         <h:selectOneMenu  value="#{projetoController.estado}" >
+                            <f:selectItem itemLabel="Selecione uma UF" itemValue="#{null}" />
+                            <f:selectItem itemLabel="Acre" itemValue="AC" />
+                            <f:selectItem itemLabel="Alagoas" itemValue="AL" />
+                            <f:selectItem itemLabel="Amapá" itemValue="AP" />
+                            <f:selectItem itemLabel="Amazonas" itemValue="AM" />
+                            <f:selectItem itemLabel="Bahia" itemValue="BA" />
+                            <f:selectItem itemLabel="Ceará" itemValue="CE" />
+                            <f:selectItem itemLabel="Distrito Federal" itemValue="DF" />
+                            <f:selectItem itemLabel="Espírito Santo" itemValue="ES" />
+                            <f:selectItem itemLabel="Goiás" itemValue="GO" />
+                            <f:selectItem itemLabel="Maranhão" itemValue="MA" />
+                            <f:selectItem itemLabel="Mato Grosso" itemValue="MT" />
+                            <f:selectItem itemLabel="Mato Grosso do Sul" itemValue="MS" />
+                            <f:selectItem itemLabel="Minas Gerais" itemValue="MG" />
+                            <f:selectItem itemLabel="Pará" itemValue="PR" />
+                            <f:selectItem itemLabel="Paraíba" itemValue="PB" />
+                            <f:selectItem itemLabel="Parana" itemValue="PA" />
+                            <f:selectItem itemLabel="Pernambuco" itemValue="PE" />
+                            <f:selectItem itemLabel="Piauí" itemValue="PI" />
+                            <f:selectItem itemLabel="Rio de Janeiro" itemValue="RJ" />
+                            <f:selectItem itemLabel="Rio Grande do Norte" itemValue="RN" />
+                            <f:selectItem itemLabel="Rio Grande do Sul" itemValue="RS" />
+                            <f:selectItem itemLabel="Rondônia" itemValue="RO" />
+                            <f:selectItem itemLabel="Roraima" itemValue="RR" />
+                            <f:selectItem itemLabel="Santa Catarina" itemValue="SC" />
+                            <f:selectItem itemLabel="Sergipe" itemValue="SE" />
+                            <f:selectItem itemLabel="São Paulo" itemValue="SP" />
+                            <f:selectItem itemLabel="Tocantins" itemValue="TO" />
+                            <f:selectItem itemLabel="Exterior" itemValue="XX" />
+                            <p:ajax event="change" listener="#{projetoController.carregar()}" update=":frmPrincipal" />
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                    <br/>
+                    <p:chart type="bar" id="uf" model="#{projetoController.graficoBarraQuantidadeProjetoPorUF}" responsive="true"  />
+                </p:panel>
+
+                <p:panel  header="Pessoa por projeto">
+                    <h:panelGrid columns="1">
+                         <p:outputLabel value="Projetos" />
+                         
+                         <h:selectOneMenu  value="#{projetoController.idProjeto}" >
+                            <f:selectItem itemValue="0" itemLabel="Todos" />
+                            <f:selectItems var="p" value="#{projetoController.listaProjeto}" itemLabel="#{p.nome}" itemValue="#{p.idProjeto}" />
+                            <p:ajax event="change" listener="#{projetoController.carregar}" update="pessoa" />
+                        </h:selectOneMenu>
+                        
+                    </h:panelGrid>
+                    <br/>
+                    <p:chart type="bar" id="pessoa" model="#{projetoController.graficoBarraQuantidadePessoaPorProjeto}" responsive="true"  />
+                </p:panel>
+            </h:panelGrid>
+
+            <h:panelGrid columns="2" style="width: 100%">
+                <p:panel  header="PGM por projeto">
+                    <h:panelGrid columns="1">
+                        
+                        <p:outputLabel value="Projetos" />
+                        <h:selectOneMenu value="#{projetoController.idProjeto}" >
+                            <f:selectItem itemValue="0" itemLabel="Todos" />
+                            <f:selectItems var="p" value="#{projetoController.listaProjeto}" itemLabel="#{p.nome}" itemValue="#{p.idProjeto}" />
+                            <p:ajax event="change" listener="#{projetoController.carregar}" update="pgm" />
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                    
+                    <p:chart type="bar" id="pgm" model="#{projetoController.graficoBarraQuantidadePgmPorProjeto}" responsive="true"  />
+                </p:panel>
+
+
+            </h:panelGrid>
+
+        </h:form>
+    </h:body>
+</html>
+
